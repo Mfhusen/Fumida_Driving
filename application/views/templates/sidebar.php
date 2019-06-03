@@ -6,41 +6,54 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-code"></i>
         </div>
-        <div class="sidebar-brand-text mx-2">Fumida Admin</div>
+        <div class="sidebar-brand-text mx-1">Fumida Access</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Admin
-    </div>
+    <!-- QUERY MENU -->
+    <?php
+    $role_id = $this->session->userdata('role_id');
+    $queryMenu = "SELECT `user_menu`.`id`, `menu`
+                    FROM `user_menu` JOIN `user_access_menu` 
+                        ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+                    WHERE `user_access_menu`.`role_id` = $role_id
+                ORDER BY `user_access_menu`.`menu_id` ASC
+                    ";
+    $menu = $this->db->query($queryMenu)->result_array();
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
+    ?>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- LOOPING MENU -->
+    <?php foreach ($menu as $m) : ?>
+        <div class="sidebar-heading">
+            <?= $m['menu']; ?>
+        </div>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        User
-    </div>
+        <!-- SUB MENU Sesuai Menu -->
+        <?php
+        $menuId = $m['id'];
+        $querySubMenu = "SELECT * FROM `user_sub_menu`
+                        WHERE `menu_id` = $menuId
+                        AND `is_active` = 1
+                         ";
+        $subMenu = $this->db->query($querySubMenu)->result_array();
+        ?>
 
-    <!-- Nav Item - Profile -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profile</span></a>
-    </li>
+        <?php foreach ($subMenu as $sm) : ?>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url($sm['url']); ?> ">
+                    <i class="<? $sm['icon']; ?>"></i>
+                    <span><?= $sm['title']; ?></span></a>
+            </li>
+        <?php endforeach; ?>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+
+    <?php endforeach; ?>
 
     <!-- Nav Item - Profile -->
     <li class="nav-item">
