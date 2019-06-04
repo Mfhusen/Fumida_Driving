@@ -42,7 +42,11 @@
         ?>
 
         <?php foreach ($subMenu as $sm) : ?>
-            <li class="nav-item">
+            <?php if (base_url($sm['url']) == current_url()) : ?>
+                <li class="nav-item active">
+                <?php else : ?>
+                <li class="nav-item">
+                <?php endif; ?>
                 <a class="nav-link" href="<?= base_url($sm['url']); ?> ">
                     <i class="<? $sm['icon']; ?>"></i>
                     <span><?= $sm['title']; ?></span></a>
