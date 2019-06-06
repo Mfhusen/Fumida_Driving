@@ -1,8 +1,9 @@
 /* Global */
 
-body{
+body {
   font-family: Muli, Arimo, Arial, Helvetica, sans-serif;
 }
+
 /* Navbar */
 .navbar {
   position: relative;
@@ -151,21 +152,19 @@ body{
   margin-bottom: 16px;
 }
 
-/* 
-.pricing .btn {
+/* .pricing .btn {
   font-size: 80%;
-  border-radius: 30px;
-  letter-spacing: 5px;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
   font-weight: bold;
-  padding: 16px;
+  padding: 1rem;
   opacity: 0.7;
   transition: all 0.2s;
-  margin-top: 50px;
 } */
 
 /* Registration */
 
-.regis{
+.regis {
   margin-top: 100px;
 }
 
@@ -178,21 +177,22 @@ body{
   text-align: center;
 }
 
-.regis span{
+.regis span {
   color: #e87f06;
 }
+
 .regis .img-fluid {
   border-radius: 15px;
   height: 400px;
 }
 
-.regis  p {
+.regis p {
   font-size: 20px;
   font-weight: 300;
   text-align: center;
 }
 
-.contact{
+.contact {
   margin-top: 50px;
 }
 
@@ -204,10 +204,11 @@ body{
 
 /* Login */
 
-:root{
+:root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
 }
+
 .card-signin {
   border: 0;
   border-radius: 1rem;
