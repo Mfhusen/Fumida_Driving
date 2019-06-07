@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
 
     <div class="row">
@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1 ?>
+                   <?php $i = 1; ?>
                     <?php foreach ($menu as $m) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
@@ -61,7 +61,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<? base_url(' menu'); ?>" method="post">
+            <form action="<? base_url('menu'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
